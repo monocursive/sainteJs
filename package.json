@@ -1,10 +1,14 @@
 {
   "name": "saintejs",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "meteor run"
   },
   "dependencies": {
-    "meteor-node-stubs": "~0.2.0"
+    "meteor-node-stubs": "~0.2.0",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-mounter": "^1.1.0"
   }
 }
