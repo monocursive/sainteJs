@@ -6,7 +6,7 @@ export default class MainLayout extends Component {
     return (
       <div>
         <header>
-          Hello
+          <img src="/logo_large.png" alt="Logo"/>
         </header>
         <main>
           {this.props.content()}

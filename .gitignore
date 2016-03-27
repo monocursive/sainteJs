@@ -21,7 +21,12 @@ dump/*
 
 settings.json
 settings.json.not-used
+
 .idea
+
+ssl.pem
+bundle.crt
+private.key
 
 scratch
 
