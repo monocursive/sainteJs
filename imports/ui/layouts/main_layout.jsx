@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
+import Header from '../components/header/header';
 
 export default class MainLayout extends Component {
 
   render() {
     return (
-      <div>
-        <header>
-          <img src="/logo_large.png" alt="Logo"/>
-        </header>
+      <div>      
+        <Header />
         <main>
           {this.props.content()}
         </main>
