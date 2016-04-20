@@ -1,5 +1,5 @@
 import {composeWithTracker} from 'react-komposer';
-import Home from '../components/home/home.jsx';
+import Home from '../components/home/home.js';
 import {Polls} from '../../api/polls/polls';
 
 function composer(props, onData) {
