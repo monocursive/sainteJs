@@ -26,5 +26,6 @@ accounts-password
 twitter
 facebook
 service-configuration
-std:accounts-bootstrap
+std:accounts-semantic
 fortawesome:fontawesome
+semantic:ui-css

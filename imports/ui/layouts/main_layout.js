@@ -7,11 +7,7 @@ export default class MainLayout extends Component {
     return (
       <div>
         <Header />
-        <div className="container-fluid">
-          <main>
-            {this.props.content()}
-          </main>
-        </div>
+        {this.props.content()}
       </div>
     );
   }
