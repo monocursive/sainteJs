@@ -29,3 +29,5 @@ service-configuration
 std:accounts-semantic
 fortawesome:fontawesome
 semantic:ui-css
+aldeed:simple-schema
+alanning:roles
