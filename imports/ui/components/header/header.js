@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
+import HeaderLogin from './header_login';
+import HeaderUser from './header_user';
 
 export default class Header extends Component {
   render() {
+    const headerUser = <HeaderUser user={this.props.user} />;
+    const headerLogin = <HeaderLogin />;
     return (
       <div className="ui top stackable menu">
         <div className="header item">
@@ -16,9 +20,7 @@ export default class Header extends Component {
         <a className="item">
           A propos
         </a>
-        <div className="right item">
-          <a href="/login" className="ui green basic button">Se connecter</a>
-        </div>
+        {this.props.user ? headerUser : headerLogin}
       </div>
     );
   }
