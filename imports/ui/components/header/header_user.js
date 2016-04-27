@@ -11,14 +11,14 @@ export default class HeaderUser extends Component {
       <Dropdown className="right item" init={true}>
         <Gravatar email={this.props.user.emails[0].address} size={33} className="image" />
         <span className="ui green basic button">{this.props.user.username} <i className="dropdown icon"></i></span>
-          <div className="menu">
-            <div className="item">Profil</div>
-            <div className="item">Changer de mot de passe</div>
-            <div className="item">
-              <button className="ui red basic button" onClick={this.logout}>Se déconnecter</button>
-            </div>
+        <div className="menu">
+          <div className="item">Profil</div>
+          <div className="item">Changer de mot de passe</div>
+          <div className="item">
+            <button className="ui red basic button" onClick={this.logout}>Se déconnecter</button>
           </div>
-        </Dropdown>
+        </div>
+      </Dropdown>
     );
   }
 }
