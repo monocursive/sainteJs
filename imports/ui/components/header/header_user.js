@@ -9,7 +9,7 @@ export default class HeaderUser extends Component {
   render() {
     return (
       <Dropdown className="right item" init={true}>
-        <Gravatar email={this.props.user.emails[0].address} size={33} className="image" />
+        <Gravatar md5={this.props.user.profile.avatar} size={33} className="image" />
         <span className="ui green basic button">{this.props.user.username} <i className="dropdown icon"></i></span>
         <div className="menu">
           <div className="item">Profil</div>
