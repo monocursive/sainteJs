@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import HomeEvent from './home-event';
+import HomeEvent from './home_event';
 
 export default class HomeEvents extends Component {
 

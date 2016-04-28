@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import HomeTop from './home-top';
-import HomeEvents from './home-events';
+import HomeTop from './home_top';
+import HomeEvents from './home_events';
 
 export default class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <HomeTop />
         <HomeEvents />
       </div>

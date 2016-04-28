@@ -1,0 +1,19 @@
+.biocode {
+  width: 100%;
+  background: #23241f;
+  border: #23241f 1px solid;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color: #f8f8f2;
+  padding: 15px;
+  p {
+    margin: 4px;
+  }
+  .biocodekey {
+    color: #f92672;
+  }
+  .biocodevalue {
+    color: #e6db74;
+  }
+}

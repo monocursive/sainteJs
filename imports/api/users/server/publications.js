@@ -9,3 +9,13 @@ Meteor.publish('usersList', function () {
     },
   });
 });
+
+Meteor.publish('singleUser', function (id) {
+  return Meteor.users.find(
+    {_id: id},
+    {fields: {
+      profile: 1,
+      username: 1
+    },
+  });
+});
