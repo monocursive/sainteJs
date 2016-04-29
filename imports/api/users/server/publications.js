@@ -14,6 +14,7 @@ Meteor.publish('singleUser', function (id) {
   return Meteor.users.find(
     {_id: id},
     {fields: {
+      createdAt: 1,
       profile: 1,
       username: 1
     },

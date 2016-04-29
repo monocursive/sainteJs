@@ -43,7 +43,7 @@ export default function() {
   FlowRouter.route("/users/:userId", {
     action(params) {
       mount(MainLayout, {
-        content: () => (<Profile userId={params.userId}/>)
+        content: () => (<Profile userId={params.userId} />)
       });
     }
   });

@@ -4,52 +4,43 @@ import moment from 'moment';
 import {Content, Card, Header, Image} from 'react-semantify';
 
 export default class ProfileCard extends Component {
-  constructor(props) {
-    super(props);
-    const twitterProps = "twitterUrl" in props.user.profile ? props.user.profile.twitterUrl : '';
-    const githubProps = "githubUrl" in props.user.profile ? props.user.profile.githubUrl : '';
-    this.state = {
-      username: props.user.username,
-      twitterUrl: twitterProps,
-      githubUrl: githubProps
-    };
-  }
-  setTwitter(event) {
-    this.setState({twitterUrl: event.target.value});
-  }
-  setGithub(event) {
-    this.setState({githubUrl: event.target.value});
-  }
   render() {
     if(this.props.editState === true) {
       return (
         <Card className="profileCard">
           <Content>
             <Gravatar md5={this.props.user.profile.avatar} size={150} className="ui circular image" />
-            <Header>{this.props.user.username}</Header>
-              <form className="ui form">
-                <div className="field">
-                  <i className="twitter icon"></i>
-                  <input
-                    type="text"
-                    placeholder="Votre url Twitter"
-                    value={this.state.twitterUrl}
-                    onChange={this.setTwitter.bind(this)}
-                  />
-                </div>
-                <div className="field">
-                  <i className="github icon"></i>
-                  <input
-                    type="text"
-                    placeholder="Votre url Github"
-                    value={this.state.githubUrl}
-                    onChange={this.setGithub.bind(this)}
-                  />
-                </div>
-              </form>
+            <form className="ui form">
+              <div className="field">
+                <input
+                  type="text"
+                  placeholder="Votre nom d'utilisateur"
+                  value={this.props.username}
+                  onChange={this.props.setUsername}
+                />
+              </div>
+              <div className="field">
+                <i className="twitter icon"></i>
+                <input
+                  type="text"
+                  placeholder="Votre url Twitter"
+                  value={this.props.twitterUrl}
+                  onChange={this.props.setTwitter}
+                />
+              </div>
+              <div className="field">
+                <i className="github icon"></i>
+                <input
+                  type="text"
+                  placeholder="Votre url Github"
+                  value={this.props.githubUrl}
+                  onChange={this.props.setGithub}
+                />
+              </div>
+            </form>
           </Content>
           <Content>
-            Nous a rejoins le 28/04/2016
+            Nous a rejoins le {moment(this.props.createdAt).format('ll')}
           </Content>
         </Card>
       );
@@ -60,14 +51,14 @@ export default class ProfileCard extends Component {
             <Gravatar md5={this.props.user.profile.avatar} size={150} className="ui circular image" />
             <Header>{this.props.user.username}</Header>
             <div>
-              <i className="twitter icon"></i> <a href="http://twitter.com/mutantantihero">{this.state.twitterUrl}</a>
+              <i className="twitter icon"></i> <a href={this.props.user.profile.twitterUrl}>{this.props.user.profile.twitterUrl}</a>
             </div>
             <div>
-              <i className="github icon"></i> <a href="http://github.com/maz-dev">{this.state.githubUrl}</a>
+              <i className="github icon"></i> <a href={this.props.user.profile.githubUrl}>{this.props.user.profile.githubUrl}</a>
             </div>
           </Content>
           <Content>
-            Nous a rejoins le 28/04/2016
+            Nous a rejoins le {moment(this.props.user.createdAt).format('ll')}
           </Content>
         </Card>
       );
