@@ -26,6 +26,11 @@ export default class Profile extends Component {
       interets: this.interetsProps
     };
   }
+  componentWillReceiveProps(nextProps) {
+    if(this.props.user._id != nextProps.user._id) {
+      this.setState({edit: false});
+    }   
+  }
   setUsername(event) {
     this.setState({username: event.target.value});
   }
@@ -78,8 +83,6 @@ export default class Profile extends Component {
       }
     });
   }
-
-  //TODO: passer les props au profil en state pas edit plutôt que le state
   render() {
     const canEdit = Meteor.user()._id == this.props.user._id ||
                     Roles.userIsInRole(Meteor.user()._id, 'admin');
