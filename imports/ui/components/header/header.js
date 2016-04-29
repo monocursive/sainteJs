@@ -14,7 +14,7 @@ export default class Header extends Component {
         <a className="item">
           Events
         </a>
-        <a className="item">
+        <a className="item" href="/users">
           Membres
         </a>
         <a className="item">

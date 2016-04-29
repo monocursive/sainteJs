@@ -84,8 +84,14 @@ export default class Profile extends Component {
     });
   }
   render() {
-    const canEdit = Meteor.user()._id == this.props.user._id ||
-                    Roles.userIsInRole(Meteor.user()._id, 'admin');
+    let canEdit;
+    if(!Meteor.user()) {
+      canEdit = false;
+    } else {
+      canEdit = Meteor.user()._id == this.props.user._id ||
+                Roles.userIsInRole(Meteor.user()._id, 'admin');
+    }
+
     return (
       <div className="ui container two column stackable grid">
         <div className="five wide column">
