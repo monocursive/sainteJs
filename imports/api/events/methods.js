@@ -1,4 +1,5 @@
 import {Meteor} from 'meteor/meteor';
+import {Promise} from 'meteor/promise';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 import {Events} from './events';
 
@@ -7,13 +8,15 @@ const httpAdapter = 'http';
 const geocoder = require('node-geocoder')(geocoderProvider, httpAdapter);
 
 Meteor.methods({
-  'events.add'({title, speaker, description, venue, adress, date}) {
+  'events.add'({authorId, title, speaker, description, venue, address, level, date, hour}) {
     this.unblock();
     
     let loggedInUser = Meteor.user();
 
-    if (!loggedInUser || !Roles.userIsInRole(loggedInUser, 'admin')) {
-      throw new Meteor.Error(403, "Accès refusé");
+    if(loggedInUser._id != authorId ) {
+      if(!Roles.userIsInRole(loggedInUser, 'admin')) {
+        throw new Meteor.Error(403, "Accès refusé");
+      }
     }
 
     new SimpleSchema({
@@ -21,14 +24,24 @@ Meteor.methods({
       speaker: {type: String},
       description: {type: String},
       venue: {type: String},
-      adress: {type: String},
-      date: {type: Date}
-    }).validate({title, speaker, description, venue, adress, date});
+      address: {type: String},
+      level: {type: String},
+      date: {type: Date},
+      hour: {type: String}
+    }).validate({title, speaker, description, venue, address, level, date, hour});
 
-    geocoder.geocode(adress, Meteor.bindEnvironment(function(err, res) {
-      Events.insert({title, speaker, description, venue, adress, res, date});
-    }));
-
-
+    const promise = geocoder.geocode(address);
+    const res = Promise.await(promise);
+    return Events.insert({
+      authorId: loggedInUser._id,
+      title, speaker, 
+      description, 
+      venue, 
+      address: res[0], 
+      level, 
+      date, 
+      hour, 
+      published: false
+    });
   }
 });
