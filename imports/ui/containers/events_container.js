@@ -1,14 +1,14 @@
 import {Meteor} from 'meteor/meteor';
 import {composeWithTracker} from 'react-komposer';
-import Profile from '../components/profile/profile';
+import Events from '../components/events/events';
 
 function composer(props, onData) {
-  const handle = Meteor.subscribe('singleUser', props.userId);
+  const handle = Meteor.subscribe('eventsList');
   if(handle.ready()) {
-    const user = Meteor.users.findOne({_id: props.userId});
-    onData(null, {user});
+    const events = Events.find({});
+    onData(null, {events});
   }
 
 }
 
-export default composeWithTracker(composer)(Profile);
+export default composeWithTracker(composer)(Events);
