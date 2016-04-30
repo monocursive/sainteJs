@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import Polls from '../imports/api/polls/server/publications';
+import Events from '../imports/api/events/server/publications';
 import UsersPubs from '../imports/api/users/server/publications';
 import EventsMethods from '../imports/api/events/methods';
 import UsersMethods from '../imports/api/users/methods';

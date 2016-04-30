@@ -1,6 +1,7 @@
 import {Meteor} from 'meteor/meteor';
 import {composeWithTracker} from 'react-komposer';
-import Events from '../components/events/events';
+import {Events} from '../../api/events/events';
+import EventsList from '../components/events/events';
 
 function composer(props, onData) {
   const handle = Meteor.subscribe('eventsList');
@@ -8,7 +9,6 @@ function composer(props, onData) {
     const events = Events.find({});
     onData(null, {events});
   }
-
 }
 
-export default composeWithTracker(composer)(Events);
+export default composeWithTracker(composer)(EventsList);
