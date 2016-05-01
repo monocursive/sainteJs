@@ -11,7 +11,7 @@ export default class Header extends Component {
         <div className="header item">
           <a href="/">SaintéJS</a>
         </div>
-        <a className="item">
+        <a className="item" href="/events">
           Events
         </a>
         <a className="item" href="/users">

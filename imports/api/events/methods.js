@@ -1,5 +1,6 @@
 import {Meteor} from 'meteor/meteor';
 import {Promise} from 'meteor/promise';
+import _ from 'lodash';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 import {Events} from './events';
 
@@ -40,8 +41,35 @@ Meteor.methods({
       address: res[0], 
       level, 
       date, 
-      hour, 
+      hour,
+      attendees: new Array(), 
       published: false
     });
+  },
+
+  'event.going'(id) {
+    let loggedInUser = Meteor.user();
+    if(!loggedInUser) {
+      throw new Meteor.Error(403, "Vous devez être connecté.");
+    }
+    let attendees = Events.findOne(id).attendees;
+    let attendee = {_id: Meteor.user()._id, username: Meteor.user().username, avatar: Meteor.user().profile.avatar};
+    let alreadyAttending = _.some(attendees, 
+      ['_id', Meteor.user()._id]
+    );
+
+    if(!alreadyAttending) {
+      attendees.push(attendee);
+      Events.update(
+        {_id: id},
+        {$set: 
+          {
+            'attendees': attendees
+          }
+        }
+      );
+    } else {
+      throw new Meteor.Error(403, "Vous avez un clone ou le dev de ce site a pas géré son affaire.");
+    }
   }
 });

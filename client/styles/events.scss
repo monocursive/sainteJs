@@ -1,0 +1,17 @@
+.event-row {
+  background: #fff;
+  box-shadow: 0px 1px 3px 0px #d4d4d5, 0px 0px 0px 1px #d4d4d5;
+  margin-top: 15px;
+  border: 0px solid;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  .speaker {
+    color: #767676;
+    border-bottom: #85DC00 1px solid;
+    margin-bottom: 20px;
+  }
+  .date {
+    margin-bottom: 20px;
+  }
+}
