@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import HomeTop from './home_top';
-import HomeEvents from './home_events';
+import Events from '../events/events';
 
 export default class Home extends Component {
 
@@ -8,7 +8,7 @@ export default class Home extends Component {
     return (
       <div className="container">
         <HomeTop />
-        <HomeEvents />
+        <Events events= {this.props.events}/>
       </div>
     );
   }

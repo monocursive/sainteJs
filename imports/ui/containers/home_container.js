@@ -1,13 +1,13 @@
 import {Meteor} from 'meteor/meteor';
 import {composeWithTracker} from 'react-komposer';
 import Home from '../components/home/home.js';
-import {Polls} from '../../api/polls/polls';
+import {Events} from '../../api/events/events';
 
 function composer(props, onData) {
-  const handle = Meteor.subscribe('polls');
+  const handle = Meteor.subscribe('eventsList');
   if(handle.ready()) {
-    const polls = Polls.find({}, {sort: {createdAt: -1}}).fetch();
-    onData(null, {polls});
+    const events = Events.find({}, {sort: {date: 1}});
+    onData(null, {events});
   }
 
 }
