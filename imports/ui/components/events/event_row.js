@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import {Icon} from 'react-semantify';
 import moment from 'moment';
+import AttendeeButton from './attendee_button';
 
 export default class EventRow extends Component {
   constructor(props) {
@@ -12,9 +13,8 @@ export default class EventRow extends Component {
       this.attends = _.some(props.event.attendees, 
         ['_id', Meteor.user()._id]
       );
-      console.log(this.attends);
     } else {
-      this.attends = false;
+      this.attends = "not logged in";
     }
 
     this.state = {
@@ -31,12 +31,20 @@ export default class EventRow extends Component {
       }
     });
   }
-  //TODO: Gérer le switch non log, pas attendee, et attendee
+
+  handleNotGoingAnymore() {
+    Meteor.call('event.notGoingAnymore', this.props.event._id, (err, res) => {
+      if(err) {
+        console.log(err);
+      } else {
+        this.setState({attends: false});
+      }
+    });
+  }
+  
   render() {
-    
     let that = this;
     function createMarkup() { return {__html: that.props.event.description}; };
-    console.log(this.state.attends);
     return (
       <div className="two column row stackable content event-row">
 
@@ -52,12 +60,11 @@ export default class EventRow extends Component {
           </div>
           <div className="row">
             <button className="ui black basic button">Plus d'infos</button> 
-            {this.state.attends ?
-              ''
-              :
-              <button className="ui teal basic button" onClick={this.handleGoing.bind(this)}>J'y vais</button>
-            }
-            
+            <AttendeeButton 
+              attends={this.state.attends} 
+              handleGoing={this.handleGoing.bind(this)}
+              handleNotGoingAnymore={this.handleNotGoingAnymore.bind(this)}
+            />
           </div>
         </div>
 

@@ -71,5 +71,27 @@ Meteor.methods({
     } else {
       throw new Meteor.Error(403, "Vous avez un clone ou le dev de ce site a pas géré son affaire.");
     }
+  },
+
+  'event.notGoingAnymore'(id) {
+    let loggedInUser = Meteor.user();
+    if(!loggedInUser) {
+      throw new Meteor.Error(403, "Vous devez être connecté.");
+    }
+
+    let attendees = Events.findOne(id).attendees;
+    attendees.map((attendee, index) => {
+      if(attendee._id == Meteor.user()._id) {
+        attendees.splice(index, 1);
+      }
+    });
+    Events.update(
+      {_id: id},
+      {$set: 
+        {
+          'attendees': attendees
+        }
+      }
+    );
   }
 });
