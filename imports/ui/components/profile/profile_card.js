@@ -48,7 +48,7 @@ export default class ProfileCard extends Component {
       return (
         <Card className="profileCard">
           <Content>
-            <Gravatar md5={this.props.user.profile.avatar} size={150} className="ui circular image" />
+            <Gravatar md5={this.props.user.profile.avatar} https size={150} className="ui circular image" />
             <Header>{this.props.user.username}</Header>
             <div>
               <i className="twitter icon"></i> <a href={this.props.user.profile.twitterUrl}>{this.props.user.profile.twitterUrl}</a>
