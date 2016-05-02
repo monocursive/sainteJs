@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import {Dropdown} from 'react-semantify';
 import Gravatar from 'react-gravatar';
+import {FlowRouter} from 'meteor/kadira:flow-router';
+
 
 export default class HeaderUser extends Component {
   logout() {
     Meteor.logout();
+    FlowRouter.go('/');
   }
   render() {
     const profileUrl = `/users/${Meteor.user()._id}`;

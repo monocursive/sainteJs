@@ -35,7 +35,7 @@ export default class HomeTop extends Component {
           <div className="header">Code de conduite</div>
             <div className="content">
               <p>Le groupe est ouvert à tous, sans distinction de niveau, de sexe, d'origine ou de tout autre critère arbitraire.</p>
-              <p>Les comportements discrimant sont à proscrire.</p>
+              <p>Les comportements discrimanatoires sont à proscrire.</p>
               <p>Si vous apprenez quelque chose lors d'une session, nous comptons sur vous pour le transmettre par la suite.</p>
               <p>Enfin, ce groupe est purement informel et organisé de manière bénévole, n'hésitez pas à proposer des présentations, inititaions et autres contenus.</p>
           </div>
