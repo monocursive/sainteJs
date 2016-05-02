@@ -4,4 +4,10 @@ body {
   color: #333;
   font-family: 'Fira Sans' !important;
   background: #F2F2F2;
+  height: 100%;
+}
+
+#wrapper {
+	min-height:100%;
+	position:relative;
 }

@@ -17,9 +17,6 @@ export default class Header extends Component {
         <a className="item" href="/users">
           Membres
         </a>
-        <a className="item">
-          A propos
-        </a>
         {this.props.user ? headerUser : headerLogin}
       </div>
     );

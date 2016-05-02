@@ -1,0 +1,12 @@
+.footer {
+  bottom: 0;
+  position: absolute;
+}
+.ui.footer { /* Increased specificity for SO snippet priority */
+  position: absolute !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  a {
+    color: #99dd4d;
+  }
+}

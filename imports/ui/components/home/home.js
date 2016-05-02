@@ -8,7 +8,11 @@ export default class Home extends Component {
     return (
       <div className="container">
         <HomeTop />
-        <Events events= {this.props.events}/>
+        {this.props.events.fetch().length > 0 ?
+          <Events events= {this.props.events}/>
+          :
+          <span></span>
+        }
       </div>
     );
   }
