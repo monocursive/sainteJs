@@ -8,7 +8,7 @@ export default class HomeTop extends Component {
         <div className="two column row stackable content">
           <div className="two wide column">
           </div>
-          <div className="four wide column logo"><img src="/logo-dark.png" height="150px" /></div>
+          <div className="four wide column logo"><img src="/logo-dark-300.png" height="150px" /></div>
           <div className="eight wide column">
             <div className="one column row stackable">
               <h2 >Groupe des utilisateurs JavaScript de Saint-Etienne.</h2>

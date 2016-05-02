@@ -59,7 +59,7 @@ export default class EventRow extends Component {
             <p><Icon className="calendar outline"/> le <b>{moment(this.props.event.date).format('LL')}</b> à <b>{this.props.event.hour}</b></p>
           </div>
           <div className="row">
-            <button className="ui black basic button">Plus d'infos</button> 
+            <a className="ui black basic button" href={"/events/"+this.props.event._id}>Plus d'infos</a> 
             <AttendeeButton 
               attends={this.state.attends} 
               handleGoing={this.handleGoing.bind(this)}

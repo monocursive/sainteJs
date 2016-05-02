@@ -6,5 +6,5 @@ Meteor.publish('eventsList', function() {
 });
 
 Meteor.publish('singleEvent', function(id) {
-  return Events.find({id});
+  return Events.find(id);
 });
