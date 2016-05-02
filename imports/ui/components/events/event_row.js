@@ -14,7 +14,7 @@ export default class EventRow extends Component {
         ['_id', Meteor.user()._id]
       );
     } else {
-      this.attends = "not logged in";
+      this.attends = "not displayed";
     }
 
     this.state = {

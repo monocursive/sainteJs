@@ -9,7 +9,7 @@ export default class AttendeeButton extends Component {
         return (<button className="ui red basic button" onClick={this.props.handleNotGoingAnymore}>J'y vais plus :(</button>);
       case false:
         return (<button className="ui teal basic button" onClick={this.props.handleGoing}>J'y vais</button>);
-      case "not logged in":
+      case "not displayed":
         return (<span></span>);
     }
   }
