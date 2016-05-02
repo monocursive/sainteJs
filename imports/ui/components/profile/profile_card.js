@@ -9,7 +9,7 @@ export default class ProfileCard extends Component {
       return (
         <Card className="profileCard">
           <Content>
-            <Gravatar md5={this.props.user.profile.avatar} size={150} className="ui circular image" />
+            <Gravatar md5={this.props.user.profile.avatar} https size={150} className="ui circular image" />
             <form className="ui form">
               <div className="field">
                 <input

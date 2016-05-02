@@ -13,7 +13,7 @@ export default class Attendee extends Component {
   render() {
     return (
       <a href={"/users/"+this.props.user._id}>
-        <Gravatar md5={this.props.user.avatar} size={50} className={"ui circular image " + this.props.user._id} />
+        <Gravatar md5={this.props.user.avatar} size={50} https className={"ui circular image " + this.props.user._id} />
         <Popup className={"popup"+this.props.user._id}>{this.props.user.username}</Popup>
       </a>
     );
