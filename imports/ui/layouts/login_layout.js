@@ -5,9 +5,9 @@ export default class LoginLayout extends Component {
 
   render() {
     return (
-      <div>
+      <div className="Site">
         <Header />
-        <div className="container">
+        <div className="container Site-content">
           <div className="ui grid">
             <div className="one column row stackable content">
               <div className="six wide column">
@@ -17,6 +17,9 @@ export default class LoginLayout extends Component {
               </div>
             </div>
           </div>
+        </div>
+        <div className="footer-main">
+            Organisateur: <a href="https://github.com/maz-dev">Michaël Mazurczak</a> - Code source: <a href="https://github.com/maz-dev/sainteJs">https://github.com/maz-dev/sainteJs</a>
         </div>
       </div>
     );
