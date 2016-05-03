@@ -1,12 +1,12 @@
-.footer {
-  bottom: 0;
-  position: absolute;
-}
-.ui.footer { /* Increased specificity for SO snippet priority */
-  position: absolute !important;
-  bottom: 0 !important;
-  width: 100% !important;
+.footer-main {
+
+  background-color: #23241f;
+  color: #f8f8f2;
+  height: 50px;
+  text-align: center;
+  padding-top: 15px;
   a {
     color: #99dd4d;
   }
+
 }
