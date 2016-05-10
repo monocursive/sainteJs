@@ -129,8 +129,7 @@ Meteor.methods({
           address: res[0],
           level,
           date,
-          hour,
-          attendees: new Array(),
+          hour
         }
       }
     );
