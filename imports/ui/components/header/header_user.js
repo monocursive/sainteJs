@@ -17,6 +17,7 @@ export default class HeaderUser extends Component {
         <span className="ui green basic button">{this.props.user.username} <i className="dropdown icon"></i></span>
         <div className="menu">
           <a href={profileUrl} className="item">Profil</a>
+          <a href="/settings" className="item">Paramètres</a>
           <a className="item" onClick={this.logout}>Se déconnecter</a>
 
         </div>

@@ -5,6 +5,7 @@ import { Accounts } from 'meteor/std:accounts-ui';
 import MainLayout from '../../ui/layouts/main_layout.js';
 import LoginLayout from '../../ui/layouts/login_layout.js';
 import Home from '../../ui/containers/home_container.js';
+import Settings from '../../ui/containers/settings_container.js';
 import Users from '../../ui/containers/users_container.js';
 import Profile from '../../ui/containers/user_container.js';
 import EventsNew from '../../ui/components/events/events_new';
@@ -74,6 +75,14 @@ export default function() {
     action(params) {
       mount(MainLayout, {
         content: () => (<Profile userId={params.userId} />)
+      });
+    }
+  });
+
+  FlowRouter.route("/settings", {
+    action(params) {
+      mount(MainLayout, {
+        content: () => (<Settings />)
       });
     }
   });

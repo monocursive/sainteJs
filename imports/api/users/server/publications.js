@@ -21,3 +21,14 @@ Meteor.publish('singleUser', function (id) {
     },
   });
 });
+
+Meteor.publish('currentUser', function () {
+  return Meteor.users.find(
+    {_id: this.userId},
+    {fields: {
+      createdAt: 1,
+      profile: 1,
+      username: 1
+    },
+  });
+});
