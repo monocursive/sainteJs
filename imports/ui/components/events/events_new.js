@@ -10,16 +10,31 @@ export default class EventsNew extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      title: '',
-      speaker: '',
-      description: '',
-      venue: '',
-      address: '',
-      level: '',
-      date: moment(),
-      hour:''
-    };
+    let {title, speaker, description, venue, address, level, date, hour} = props.event;
+    if(props.edit ==  true) {
+      this.state = {
+        title: title,
+        speaker: speaker,
+        description: description,
+        venue: venue,
+        address: address.formattedAddress,
+        level: level,
+        date: moment(date),
+        hour:hour
+      };
+    } else {
+      this.state = {
+        title: '',
+        speaker: '',
+        description: '',
+        venue: '',
+        address: '',
+        level: '',
+        date: moment(),
+        hour:''
+      };
+    }
+
   }
   handleTitle(event) {
     this.setState({title: event.target.value});
@@ -59,6 +74,9 @@ export default class EventsNew extends Component {
     });
   }
   render() {
+    if(!Meteor.user()) {
+      FlowRouter.go('/');
+    }
     return (
       <Form className="container">
         <h2>Nouvel event</h2>

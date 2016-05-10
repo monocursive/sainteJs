@@ -1,6 +1,7 @@
 import {Meteor} from 'meteor/meteor';
 import React, {Component} from 'react';
 import _ from 'lodash';
+import {Roles} from 'meteor/alanning:roles';
 import {Content, Card, Header, Icon, Image} from 'react-semantify';
 import moment from 'moment';
 import Attendee from './attendee';
@@ -50,6 +51,14 @@ export default class Event extends Component {
     let that = this;
     function createMarkup() { return {__html: that.props.event.description}; };
 
+    let canEdit;
+    if(Meteor.user()) {
+      if(Roles.userIsInRole(Meteor.user()._id, 'admin')) {
+        canEdit = true;
+      } else {
+        canEdit = false;
+      }
+    }
     return (
       <div className="ui container two column stackable grid">
         <div className="five wide column">
@@ -81,6 +90,7 @@ export default class Event extends Component {
 
         </div>
         <div className="eleven wide column">
+          {canEdit ? <a className="ui green basic button" href={'/events/'+this.props.event._id+'/edit'}>Editer</a>: ''}
           <p dangerouslySetInnerHTML={createMarkup()}></p>
           <p><b><Icon className="line chart"/> Niveau {this.props.event.level}</b></p>
           <p><b><Icon className="location arrow"/> {this.props.event.venue} - {this.props.event.address.formattedAddress}</b></p>

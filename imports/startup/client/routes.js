@@ -10,6 +10,7 @@ import Users from '../../ui/containers/users_container.js';
 import Profile from '../../ui/containers/user_container.js';
 import EventsNew from '../../ui/components/events/events_new';
 import EventsContainer from '../../ui/containers/events_container.js';
+import EventEditContainer from '../../ui/containers/event_edit_container.js';
 import EventContainer from '../../ui/containers/event_container.js';
 import { T9n } from 'meteor/softwarerero:accounts-t9n';
 
@@ -42,7 +43,15 @@ export default function() {
   FlowRouter.route("/events/new", {
     action() {
       mount(MainLayout, {
-        content: () => (<EventsNew />)
+        content: () => (<EventsNew edit={false}/>)
+      });
+    }
+  });
+
+  FlowRouter.route("/events/:id/edit", {
+    action(params) {
+      mount(MainLayout, {
+        content: () => (<EventEditContainer id={params.id} edit={true}/>)
       });
     }
   });
