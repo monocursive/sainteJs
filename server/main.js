@@ -13,18 +13,4 @@ import UserConfig from '../imports/api/users/server/config';
 Meteor.startup(() => {
   PollsSeed();
   UsersSeeds();
-
-  Meteor.users.find().fetch().map((user) => {
-    if(!("notif_email" in user.profile)) {
-      Meteor.users.update(
-        {_id: user._id},
-        {
-          $set: {
-            "profile.notif_email": false
-          }
-        }
-      );
-    }
-  });
-
 });
