@@ -8,6 +8,7 @@ Accounts.onCreateUser(function(options, user) {
     const hash = Gravatar.hash(email);
     user.profile = { avatar: hash };
   }
+  user.profile.notif_email = false;
   return user;
 });
 
