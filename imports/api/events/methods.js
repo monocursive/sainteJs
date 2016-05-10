@@ -113,25 +113,38 @@ Meteor.methods({
       level: {type: String},
       date: {type: Date},
       hour: {type: String}
-    }).validate({title, speaker, description, venue, address, level, date, hour});
+    }).validate({_id, title, speaker, description, venue, address, level, date, hour});
 
     const promise = geocoder.geocode(address);
     const res = Promise.await(promise);
-
-    Events.edit(
+    return Events.update(
       {_id},
       {
         $set: {
           authorId: loggedInUser._id,
-          title, speaker,
+          title,
+          speaker,
           description,
           venue,
           address: res[0],
           level,
           date,
-          hour
+          hour,
         }
       }
     );
+  },
+  'event.delete'({_id}) {
+    const loggedInUser = Meteor.user();
+
+    if(!Roles.userIsInRole(loggedInUser, 'admin')) {
+      throw new Meteor.Error(403, "Accès refusé");
+    }
+
+    new SimpleSchema({
+      _id: {type: String},
+    }).validate({_id});
+
+    Events.remove({_id});
   }
 });

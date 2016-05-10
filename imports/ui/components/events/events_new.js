@@ -10,9 +10,10 @@ export default class EventsNew extends Component {
 
   constructor(props) {
     super(props);
-    let {title, speaker, description, venue, address, level, date, hour} = props.event;
+    let {_id, title, speaker, description, venue, address, level, date, hour} = props.event;
     if(props.edit ==  true) {
       this.state = {
+        _id: _id,
         title: title,
         speaker: speaker,
         description: description,
@@ -64,14 +65,24 @@ export default class EventsNew extends Component {
     event.preventDefault();
     let data = this.state;
     data.date = this.state.date._d;
-    console.log(this.state);
-    Meteor.call('events.add', data, (err, res) => {
-      if(err) {
-        console.log(err);
-      } else {
-        FlowRouter.go("/events/"+res);
-      }
-    });
+    if(this.props.edit == true) {
+      Meteor.call('event.edit', data, (err, res) => {
+        if(err) {
+          console.log(err);
+        } else {
+          FlowRouter.go("/events/"+res);
+        }
+      });
+    } else {
+      Meteor.call('events.add', data, (err, res) => {
+        if(err) {
+          console.log(err);
+        } else {
+          FlowRouter.go("/events/"+res);
+        }
+      });
+    }
+
   }
   render() {
     if(!Meteor.user()) {

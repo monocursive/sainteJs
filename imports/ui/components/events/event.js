@@ -5,6 +5,7 @@ import {Roles} from 'meteor/alanning:roles';
 import {Content, Card, Header, Icon, Image} from 'react-semantify';
 import moment from 'moment';
 import Attendee from './attendee';
+import EventButtons from './event_buttons';
 import EventMap from './map';
 import AttendeeButton from './attendee_button';
 
@@ -42,6 +43,12 @@ export default class Event extends Component {
       } else {
         this.setState({attends: false});
       }
+    });
+  }
+
+  handleDelete() {
+    Meteor.call('event.delete', {_id: this.props.event._id}, (err, res) => {
+      FlowRouter.go('/');
     });
   }
 
@@ -90,7 +97,7 @@ export default class Event extends Component {
 
         </div>
         <div className="eleven wide column">
-          {canEdit ? <a className="ui green basic button" href={'/events/'+this.props.event._id+'/edit'}>Editer</a>: ''}
+          {canEdit ? <EventButtons _id={this.props.event._id} delete={this.handleDelete.bind(this)}/>: ''}
           <p dangerouslySetInnerHTML={createMarkup()}></p>
           <p><b><Icon className="line chart"/> Niveau {this.props.event.level}</b></p>
           <p><b><Icon className="location arrow"/> {this.props.event.venue} - {this.props.event.address.formattedAddress}</b></p>
