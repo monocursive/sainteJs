@@ -8,9 +8,9 @@ import AttendeeButton from './attendee_button';
 export default class EventRow extends Component {
   constructor(props) {
     super(props);
-    
+
     if(Meteor.user()) {
-      this.attends = _.some(props.event.attendees, 
+      this.attends = _.some(props.event.attendees,
         ['_id', Meteor.user()._id]
       );
     } else {
@@ -41,7 +41,7 @@ export default class EventRow extends Component {
       }
     });
   }
-  
+
   render() {
     let that = this;
     function createMarkup() { return {__html: that.props.event.description}; };
@@ -59,9 +59,10 @@ export default class EventRow extends Component {
             <p><Icon className="calendar outline"/> le <b>{moment(this.props.event.date).format('LL')}</b> à <b>{this.props.event.hour}</b></p>
           </div>
           <div className="row">
-            <a className="ui black basic button" href={"/events/"+this.props.event._id}>Plus d'infos</a> 
-            <AttendeeButton 
-              attends={this.state.attends} 
+            <a className="ui black basic button" href={"/events/"+this.props.event._id}>Plus d'infos</a>
+            <AttendeeButton
+              attends={this.state.attends}
+              date={this.props.event.date}
               handleGoing={this.handleGoing.bind(this)}
               handleNotGoingAnymore={this.handleNotGoingAnymore.bind(this)}
             />
@@ -74,9 +75,8 @@ export default class EventRow extends Component {
           <p><b><Icon className="line chart"/> Niveau {this.props.event.level}</b></p>
           <p><b><Icon className="location arrow"/> {this.props.event.venue} - {this.props.event.address.formattedAddress}</b></p>
         </div>
-        
+
       </div>
     );
   }
 }
-

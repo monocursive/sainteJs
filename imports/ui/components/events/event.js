@@ -66,6 +66,9 @@ export default class Event extends Component {
         canEdit = false;
       }
     }
+
+    let pastEvent = this.props.event.date < new Date();
+
     return (
       <div className="ui container two column stackable grid">
         <div className="five wide column">
@@ -82,13 +85,14 @@ export default class Event extends Component {
             <Content>
               <AttendeeButton
                 attends={this.state.attends}
+                date={this.props.event.date}
                 handleGoing={this.handleGoing.bind(this)}
                 handleNotGoingAnymore={this.handleNotGoingAnymore.bind(this)}
               />
             </Content>
           </Card>
 
-          <h3>Ils y vont :</h3>
+          {pastEvent ? <h3>Ils y sont allés :</h3>: <h3>Ils y vont :</h3>}
         <div className="attendee-list">
           {this.props.event.attendees.map((attendee) => {
             return <Attendee user={attendee} key={attendee._id}/>;
