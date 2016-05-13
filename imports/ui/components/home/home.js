@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import HomeTop from './home_top';
-import Events from '../events/events';
+import EventsList from '../events/events_list';
 
 export default class Home extends Component {
 
@@ -9,7 +9,7 @@ export default class Home extends Component {
       <div className="container">
         <HomeTop />
         {this.props.events.fetch().length > 0 ?
-          <Events events= {this.props.events}/>
+          <EventsList events= {this.props.events}/>
           :
           <span></span>
         }

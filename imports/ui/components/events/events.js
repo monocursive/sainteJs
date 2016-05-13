@@ -19,7 +19,19 @@ export default class Events extends Component {
 
       );
     } else {
-      return <h2>Rien pour l'instant</h2>;
+      return (
+        <div>
+          <div className="ui three item menu">
+            <a href='/events' className={this.props.newEvents ? "active item" : "item"}>
+              A venir
+            </a>
+            <a href='events/old' className={!this.props.newEvents ? "active item" : "item"}>
+              Passés
+            </a>
+          </div>
+          <h2>Rien pour l'instant</h2>
+        </div>
+      );
     }
   }
 }
