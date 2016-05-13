@@ -71,7 +71,7 @@ export default class EventsNew extends Component {
         if(err) {
           console.log(err);
         } else {
-          FlowRouter.go("/events/"+res);
+          FlowRouter.go("/");
         }
       });
     } else {
@@ -79,7 +79,7 @@ export default class EventsNew extends Component {
         if(err) {
           console.log(err);
         } else {
-          FlowRouter.go("/events/"+res);
+          FlowRouter.go("/");
         }
       });
     }

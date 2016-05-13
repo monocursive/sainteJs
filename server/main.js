@@ -1,16 +1,21 @@
 import { Meteor } from 'meteor/meteor';
-import Polls from '../imports/api/polls/server/publications';
-import Events from '../imports/api/events/server/publications';
-import UsersPubs from '../imports/api/users/server/publications';
-import EventsMethods from '../imports/api/events/methods';
-import UsersMethods from '../imports/api/users/methods';
+import { SyncedCron } from 'meteor/percolate:synced-cron';
+
+import '../imports/api/polls/server/publications';
+import '../imports/api/events/server/publications';
+import '../imports/api/users/server/publications';
+import '../imports/api/events/methods';
+import '../imports/api/users/methods';
 
 import PollsSeed from '../imports/api/polls/server/publications_seeds';
 import UsersSeeds from '../imports/api/users/server/publications_seeds';
 
-import UserConfig from '../imports/api/users/server/config';
+import '../imports/api/users/server/config';
+import '../imports/startup/server/cron';
+
 
 Meteor.startup(() => {
   PollsSeed();
   UsersSeeds();
+  SyncedCron.start();
 });
