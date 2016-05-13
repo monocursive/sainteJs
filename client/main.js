@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import moment from 'moment';
-
+import EventsMethods from '../imports/api/events/methods';
+import UsersMethods from '../imports/api/users/methods';
 import Router from '../imports/startup/client/routes';
 
 Router();

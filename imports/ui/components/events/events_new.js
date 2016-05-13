@@ -10,8 +10,9 @@ export default class EventsNew extends Component {
 
   constructor(props) {
     super(props);
-    let {_id, title, speaker, description, venue, address, level, date, hour} = props.event;
+
     if(props.edit ==  true) {
+      let {_id, title, speaker, description, venue, address, level, date, hour} = props.event;
       this.state = {
         _id: _id,
         title: title,

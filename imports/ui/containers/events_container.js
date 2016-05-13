@@ -5,8 +5,26 @@ import EventsList from '../components/events/events';
 
 function composer(props, onData) {
   const handle = Meteor.subscribe('eventsList');
+  let selector;
+
   if(handle.ready()) {
-    const events = Events.find({}, {sort: {date: 1}});
+    if (props.newEvents == true) {
+      var events = Events.find(
+        {
+          date: {
+            $gte: new Date()
+          }
+        },
+        {sort: {date: 1}});
+    } else {
+      var events = Events.find(
+        {
+          date: {
+            $lte: new Date()
+          }
+        },
+        {sort: {date: 1}});
+    }
     onData(null, {events});
   }
 }

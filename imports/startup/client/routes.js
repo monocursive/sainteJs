@@ -35,7 +35,15 @@ export default function() {
   FlowRouter.route('/events', {
       action() {
         mount(MainLayout, {
-          content: () => (<EventsContainer />)
+          content: () => (<EventsContainer newEvents={true}/>)
+        });
+      }
+  });
+
+  FlowRouter.route('/events/old', {
+      action() {
+        mount(MainLayout, {
+          content: () => (<EventsContainer newEvents={false}/>)
         });
       }
   });
