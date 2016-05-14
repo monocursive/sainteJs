@@ -1,5 +1,6 @@
 import {Meteor} from 'meteor/meteor';
 import {composeWithTracker} from 'react-komposer';
+import {LoaderTransition} from './loader';
 import SettingsPage from '../components/profile/settings_page';
 
 function composer(props, onData) {
@@ -11,4 +12,4 @@ function composer(props, onData) {
 
 }
 
-export default composeWithTracker(composer)(SettingsPage);
+export default composeWithTracker(composer, LoaderTransition)(SettingsPage);

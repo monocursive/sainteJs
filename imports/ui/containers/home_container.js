@@ -1,5 +1,6 @@
 import {Meteor} from 'meteor/meteor';
 import {composeWithTracker} from 'react-komposer';
+import {LoaderTransition} from './loader';
 import Home from '../components/home/home.js';
 import {Events} from '../../api/events/events';
 
@@ -18,4 +19,4 @@ function composer(props, onData) {
 
 }
 
-export default composeWithTracker(composer)(Home);
+export default composeWithTracker(composer, LoaderTransition)(Home);

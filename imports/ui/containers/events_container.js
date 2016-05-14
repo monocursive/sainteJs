@@ -1,5 +1,6 @@
 import {Meteor} from 'meteor/meteor';
 import {composeWithTracker} from 'react-komposer';
+import {LoaderTransition} from './loader';
 import {Events} from '../../api/events/events';
 import EventsList from '../components/events/events';
 
@@ -29,4 +30,4 @@ function composer(props, onData) {
   }
 }
 
-export default composeWithTracker(composer)(EventsList);
+export default composeWithTracker(composer, LoaderTransition)(EventsList);

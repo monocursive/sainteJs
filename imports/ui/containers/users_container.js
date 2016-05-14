@@ -1,5 +1,6 @@
 import {Meteor} from 'meteor/meteor';
 import {composeWithTracker} from 'react-komposer';
+import {LoaderTransition} from './loader';
 import Users from '../components/users/users';
 
 function composer(props, onData) {
@@ -11,4 +12,4 @@ function composer(props, onData) {
 
 }
 
-export default composeWithTracker(composer)(Users);
+export default composeWithTracker(composer, LoaderTransition)(Users);
