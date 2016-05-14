@@ -1,0 +1,14 @@
+{
+  "public": {
+
+  },
+  "smtp": {
+    "username": "yourSMTPUsername",
+    "password": "yourSMTPPassword",
+    "url": "yourSMTPURL"
+  },
+  "kadira": {
+    "appId": "yourKadiraAppId",
+    "appSecret": "yourKadiraAppSecret"
+   }
+}
