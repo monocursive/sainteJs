@@ -3,8 +3,8 @@ import { Email } from 'meteor/email';
 import { Events } from '../../api/events/events';
 
 export default function mailRemind() {
-  var events;
-  events = Events.find(
+
+  const events = Events.find(
     {
       date: {
         $gte: new Date()
@@ -17,19 +17,24 @@ export default function mailRemind() {
   events.map(function(event) {
     if(currentDate.getDate() == event.date.getDate() - 1) {
       event.attendees.map(function(attendee) {
-        let email = Meteor.users.find({_id: attendee._id}).fetch()[0].emails[0].address;
-        let username = Meteor.users.find({_id: attendee._id}).fetch()[0].username;
-        sendMailReminder(email, username, event.title);
+        let user = Meteor.users.find({_id: attendee._id}).fetch()[0];
+        if(user.profile.notif_email == true) {
+          let email = user.emails[0].address;
+          let username = user.username;
+          sendMailReminder(email, username, event.title, event.venue, event.address.formattedAddress, event.hour);
+        }
       });
     }
   });
 }
 
-function sendMailReminder(email, username, eventTitle) {
+function sendMailReminder(email, username, eventTitle, eventVenue, eventAddress, hour) {
   Email.send({
-    from: "contact@sainte-js.fr",
+    from: "SaintéJS <contact@sainte-js.fr>",
     to: email,
     subject: `Rappel : "${eventTitle}" aura lieu demain`,
-    html: `yo`
+    text: `Hello ${username}, \n`
+      + `"${eventTitle}" aura lieu demain à ${eventVenue}, ${eventAddress} à ${hour}. \n\n`
+      + "A demain!"
   });
 };

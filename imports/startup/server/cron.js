@@ -6,7 +6,7 @@ SyncedCron.add({
   name: 'Send event reminder' ,
   schedule: function(parser) {
     // parser is a later.parse object
-    return parser.text('every 1 mins');;
+    return parser.text('at 10:30 am');
   },
   job: function() {
     mailRemind();
