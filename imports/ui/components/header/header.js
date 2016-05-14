@@ -7,7 +7,7 @@ export default class Header extends Component {
     const headerUser = <HeaderUser user={this.props.user} />;
     const headerLogin = <HeaderLogin />;
     return (
-      <div className="ui top stackable menu">
+      <div className="ui top stackable menu main-menu">
         <div className="header item">
           <a href="/">SaintéJS</a>
         </div>
