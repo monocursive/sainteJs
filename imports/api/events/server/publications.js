@@ -8,3 +8,7 @@ Meteor.publish('eventsList', function() {
 Meteor.publish('singleEvent', function(id) {
   return Events.find(id);
 });
+
+Meteor.publish('eventsCount', function() {
+  Counts.publish(this, 'events-count', Events.find());
+});

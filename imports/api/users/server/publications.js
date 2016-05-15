@@ -49,3 +49,7 @@ Meteor.publish('currentUser', function () {
     },
   });
 });
+
+Meteor.publish('usersCount', function() {
+  Counts.publish(this, 'users-count', Meteor.users.find());
+});
