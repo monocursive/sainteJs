@@ -9,6 +9,7 @@ import Settings from '../../ui/containers/settings_container.js';
 import Users from '../../ui/containers/users_container.js';
 import Profile from '../../ui/containers/user_container.js';
 import EventsNew from '../../ui/components/events/events_new';
+import Dashboard from '../../ui/components/dashboard/dashboard';
 import EventsContainer from '../../ui/containers/events_container.js';
 import EventEditContainer from '../../ui/containers/event_edit_container.js';
 import EventContainer from '../../ui/containers/event_container.js';
@@ -103,5 +104,30 @@ export default function() {
       });
     }
   });
+
+  FlowRouter.route("/dashboard", {
+    action(params) {
+      mount(MainLayout, {
+        content: () => (<Dashboard screen={"home"}/>)
+      });
+    }
+  });
+
+  FlowRouter.route("/dashboard/users", {
+    action(params) {
+      mount(MainLayout, {
+        content: () => (<Dashboard screen={"users"}/>)
+      });
+    }
+  });
+
+  FlowRouter.route("/dashboard/events", {
+    action(params) {
+      mount(MainLayout, {
+        content: () => (<Dashboard screen={"events"}/>)
+      });
+    }
+  });
+
 
 }

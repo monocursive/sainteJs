@@ -20,6 +20,7 @@ export default class HeaderUser extends Component {
         <div className="menu">
           <a href={profileUrl} className="item">Profil</a>
           {Roles.userIsInRole(loggedInUser, 'admin') ? <a href="/events/new" className="item">Nouvel event</a> : <span></span>}
+          {Roles.userIsInRole(loggedInUser, 'admin') ? <a href="/dashboard" className="item">Dashboard</a> : <span></span>}
           <a href="/settings" className="item">Paramètres</a>
           <a className="item" onClick={this.logout}>Se déconnecter</a>
 

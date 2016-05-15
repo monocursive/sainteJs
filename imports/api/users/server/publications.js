@@ -11,6 +11,23 @@ Meteor.publish('usersList', function () {
   });
 });
 
+Meteor.publish('usersListAdmin', function () {
+  if(Roles.userIsInRole(this.userId, 'admin')) {
+    return Meteor.users.find(
+      {},
+      {fields: {
+        emails: 1,
+        createdAt: 1,
+        profile: 1,
+        username: 1
+      },
+    });
+  } else {
+    return null;
+  }
+
+});
+
 Meteor.publish('singleUser', function (id) {
   return Meteor.users.find(
     {_id: id},
