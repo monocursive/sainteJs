@@ -40,7 +40,7 @@ export default class ProfileCard extends Component {
             </form>
           </Content>
           <Content>
-            Nous a rejoins le {moment(this.props.createdAt).format('ll')}
+            Nous a rejoint le {moment(this.props.createdAt).format('ll')}
           </Content>
         </Card>
       );
@@ -58,7 +58,7 @@ export default class ProfileCard extends Component {
             </div>
           </Content>
           <Content>
-            Nous a rejoins le {moment(this.props.user.createdAt).format('ll')}
+            Nous a rejoint le {moment(this.props.user.createdAt).format('ll')}
           </Content>
         </Card>
       );
