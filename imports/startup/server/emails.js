@@ -34,7 +34,7 @@ function sendMailReminder(email, username, eventTitle, eventVenue, eventAddress,
     to: email,
     subject: `Rappel : "${eventTitle}" aura lieu demain`,
     text: `Hello ${username}, \n`
-      + `"${eventTitle}" aura lieu demain à ${eventVenue}, ${eventAddress} à ${hour}. \n\n`
-      + "A demain!"
+      + `"${eventTitle}" aura lieu après-demain à ${eventVenue}, ${eventAddress} à ${hour}. \n\n`
+      + "A très vite!"
   });
 };

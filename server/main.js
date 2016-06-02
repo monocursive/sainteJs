@@ -17,5 +17,9 @@ import '../imports/startup/server/cron';
 Meteor.startup(() => {
   PollsSeed();
   UsersSeeds();
+  console.log('ok');
+  SyncedCron.config({
+    utc: true,
+  });
   SyncedCron.start();
 });
